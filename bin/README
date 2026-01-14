@@ -1,7 +1,12 @@
-Sucros - A ChromeOS daemon that allows running sudo commands in crosh shell.
+# Sucros - A ChromeOS daemon that allows running sudo commands in crosh shell.
+
 <br>
 
-- For **ChromeOS, and most Linux Distros,** press `ctrl-alt-t`, open a crosh `shell` and paste:
+### How to install:
+
+<br>
+
+- Press `ctrl-alt-t`, open a crosh `shell` and paste:
 
 <pre>bash <(curl -s "https://raw.githubusercontent.com/shadowed1/sucros/main/bin/sucros_downloader.sh?$(date +%s)")</pre>
 
