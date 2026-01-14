@@ -1,12 +1,19 @@
 #!/bin/bash
-# Sucros Installer
+# sucros installer
 # shadowed1
-# Must be run as sudo logged in as chronos in VT-2
 
-mkdir -p /usr/local/bin
-curl -L https://raw.githubusercontent.com/shadowed1/sucros/main/sucros.sh -o /usr/local/bin/sucros
-curl -L https://raw.githubusercontent.com/shadowed1/sucros/main/sucros-daemon.sh -o /usr/local/bin/sucros-daemon
-curl -L https://raw.githubusercontent.com/shadowed1/sucros/main/sucros.conf -o /etc/init/sucros.conf
-chmod +x /usr/local/bin/sucros
-chmod +x /usr/local/bin/sucros-daemon
-rm -f /usr/local/sucros_installer
+set -e
+echo "[sucros] Installing..."
+BIN_DIR="/usr/local/bin"
+INIT_DIR="/etc/init"
+mkdir -p "$BIN_DIR"
+
+curl -fsSL https://raw.githubusercontent.com/shadowed1/sucros/main/sucros.sh -o "$BIN_DIR/sucros"
+curl -fsSL https://raw.githubusercontent.com/shadowed1/sucros/main/sucros-daemon.sh -o "$BIN_DIR/sucros-daemon"
+curl -fsSL https://raw.githubusercontent.com/shadowed1/sucros/main/sucros.conf -o "$INIT_DIR/sucros.conf"
+
+chmod 755 "$BIN_DIR/sucros"
+chmod 755 "$BIN_DIR/sucros-daemon"
+
+echo "[sucros] Installation complete"
+echo "[sucros] Run: sudo sucros-daemon in VT-2 logged in as chronos"
