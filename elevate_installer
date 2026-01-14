@@ -4,3 +4,4 @@ curl -L https://raw.githubusercontent.com/shadowed1/elevate/main/elevate.sh -o /
 curl -L https://raw.githubusercontent.com/shadowed1/elevate/main/elevate-daemon.sh -o /usr/local/bin/elevate-daemon
 chmod +x /usr/local/bin/elevate
 chmod +x /usr/local/bin/elevate-daemon
+rm -f /usr/local/elevate_installer
