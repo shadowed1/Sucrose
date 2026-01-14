@@ -3,7 +3,6 @@
 # shadowed1
 
 FIFO="/usr/local/elevate/elevate.fifo"
-
 echo "[elevate-daemon] Listening on $FIFO"
 
 while true; do
