@@ -6,3 +6,4 @@ curl -L https://raw.githubusercontent.com/shadowed1/elevate/main/elevate.fifo -o
 chmod +x /usr/local/elevate
 chmod +x /usr/local/elevate-daemon
 chmod +x /usr/local/.elevate.fifo
+chown 755 /usr/local/.elevate.fifo
