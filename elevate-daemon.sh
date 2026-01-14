@@ -1,5 +1,5 @@
 #!/bin/bash
-# ChromeOS Elevate Daemon (FIFO, secure, correct)
+# Sucros Daemon
 # shadowed1
 
 FIFO="/home/chronos/.elevate.fifo"
