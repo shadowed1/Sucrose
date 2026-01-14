@@ -1,4 +1,8 @@
+#!/bin/bash
+# ChromeOS Elevated Shell
+# shadowed1
 # Must be run as sudo logged in as chronos in VT-2
+
 mkdir -p /usr/local/bin
 curl -L https://raw.githubusercontent.com/shadowed1/elevate/main/elevate.sh -o /usr/local/bin/elevate
 curl -L https://raw.githubusercontent.com/shadowed1/elevate/main/elevate-daemon.sh -o /usr/local/bin/elevate-daemon
