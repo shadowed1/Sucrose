@@ -2,17 +2,19 @@
 # ChromeOS Elevate Daemon
 # shadowed1
 
-FIFO="/usr/local/.elevate.fifo"
+CMD_FILE="/usr/local/.elevate.cmds"
 
-sudo rm -f "$FIFO"
-sudo mkfifo "$FIFO"
-exec 3<> "$FIFO"
+sudo touch "$CMD_FILE"
+sudo chown 1000:1000 "$CMD_FILE"
+sudo chmod 600 "$CMD_FILE"
 
-while true; do
-    if read -r cmd <&3; then
-        cmd="${cmd#"${cmd%%[![:space:]]*}"}"
-        cmd="${cmd%"${cmd##*[![:space:]]}"}"
-        [[ -z "$cmd" ]] && continue
-        sudo bash -c "$cmd"
-    fi
+echo ""
+echo "[elevate-daemon] Listening on $CMD_FILE"
+echo ""
+
+tail -F "$CMD_FILE" | while read -r cmd; do
+    cmd="$(echo "$cmd" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+    [[ -z "$cmd" ]] && continue
+    echo "[elevate-daemon] Running: $cmd"
+    bash -c "$cmd"
 done
