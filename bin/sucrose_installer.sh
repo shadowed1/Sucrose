@@ -12,6 +12,7 @@ BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
 set -e
+echo
 echo "${MAGENTA}Noexec warning can be safely ignored.${RESET}"
 echo
 echo "${GREEN}[sucrose] Installing... ${RESET}"
