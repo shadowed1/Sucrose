@@ -1,7 +1,8 @@
-# Sucrose 
+<p align="center">
+  <img src="https://i.imgur.com/6mhVqb5.png" alt="logo" width="500" />
+</p>
 
-### A ChromeOS daemon that enables running sudo commands in crosh shell!
-
+### A ChromeOS daemon that enables running sudo in crosh!
 <br>
 
 ### How to install:
