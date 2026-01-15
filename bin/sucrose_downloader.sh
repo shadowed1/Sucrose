@@ -1,8 +1,18 @@
 #!/bin/bash
 # Sucrose Downloader
 # shadowed1
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
 echo
-echo ""
+echo "${BLUE}"
 echo "                                                           .lxo. "                                    
 echo "                                                 .';,.     .oOx' "                                    
 echo "                                                 ;x00,      'c. "                                     
@@ -40,15 +50,16 @@ echo "                                   l0Oc         .od,            .l00o. "
 echo "                                   ,ol'         cO0o.            .:c' "                            
 echo "                                                :kkl. "                             
 echo
-echo "                                                Sucrose"
+echo "                                                Sucrose ${RESET}"
 echo
 curl -L https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_installer.sh -o /home/chronos/user/sucrose_installer
 echo
-echo "How to install:"
+echo "${CYAN}How to install: ${RESET}${BLUE}"
 echo
 echo "ctrl-alt-refresh to open VT-2 (ctrl-alt-back to exit) - log in as chronos"
 echo "Run the command listed below in VT-2 to continue the installer:"
-echo
+echo "${BOLD}"
 echo "sudo bash ~/sucrose_installer"
+echo "${RESET}${BLUE}"
+echo "Can safely ignore noexec mount warning. ${RESET}"
 echo
-echo "Can safely ignore noexec mount warning."
