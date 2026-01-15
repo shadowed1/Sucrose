@@ -85,25 +85,137 @@ rainbow_echo "                               ..   ':.         .;;.             .
 rainbow_echo "                                   l0Oc         .od,            .l00o. "                           
 rainbow_echo "                                   ,ol'         cO0o.            .:c' "                            
 rainbow_echo "                                                :kkl. "                             
-echo "${RESET}${BOLD}${LOGO_COLOR}                                             "
-echo "                                 ▄▄▄▄▄▄▄                                     "
-echo "                                █████▀▀▀                                     "
-echo "                                 ▀████▄  ██ ██ ▄████ ████▄ ▄███▄ ▄█▀▀▀ ▄█▀█▄ "
-echo "                                   ▀████ ██ ██ ██    ██ ▀▀ ██ ██ ▀███▄ ██▄█▀ "
-echo "                                ███████▀ ▀██▀█ ▀████ ██    ▀███▀ ▄▄▄█▀ ▀█▄▄▄ "
-echo "                                             "
-echo "                                           Enabling sudo in crosh! ${RESET}"   
+echo "${RESET}${LOGO_COLOR}                                             "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                 ▄▄▄▄▄▄▄                                     "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                █████▀▀▀                                     "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                 ▀████▄  ██ ██ ▄████ ████▄ ▄███▄ ▄█▀▀▀ ▄█▀█▄ "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                   ▀████ ██ ██ ██    ██ ▀▀ ██ ██ ▀███▄ ██▄█▀ "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                ███████▀ ▀██▀█ ▀████ ██    ▀███▀ ▄▄▄█▀ ▀█▄▄▄ "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                             "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${LOGO_COLOR}                                           Enabling sudo in crosh! ${RESET}"   
 echo ""
 curl -L https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_installer.sh -o /home/chronos/user/sucrose_installer
 echo
-echo "${CYAN}${BOLD}How to install: ${RESET}${BLUE}"
-echo "${CYAN}"
+echo "${RESET}${LOGO_COLOR}                                             "
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${LOGO_COLOR}${BOLD}How to install: ${RESET}"
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${LOGO_COLOR}"
 echo "0.) Enable developer mode."
 echo "1.) ctrl-alt-refresh to open VT-2 (ctrl-alt-back to exit)"
 echo "2.) Log in as chronos"
 echo "3.) Run the command listed below in VT-2 to continue the installer:"
-echo "${RESET}${BOLD}${BLUE}"
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${RESET}${BOLD}${LOGO_COLOR}"
 echo "sudo bash ~/sucrose_installer"
-echo "${RESET}${BLUE}"
-echo "${MAGENTA}README: ${BOLD}https://github.com/shadowed1/sucrose/blob/main/README.md${RESET}"
+echo
+echo "${RESET}"
+COLORS=(
+    "$RED"
+    "$GREEN"
+    "$YELLOW"
+    "$BLUE"
+    "$MAGENTA"
+    "$CYAN"
+)
+
+LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
+echo "${LOGO_COLOR}README: ${BOLD}https://github.com/shadowed1/sucrose/blob/main/README.md${RESET}"
 echo
