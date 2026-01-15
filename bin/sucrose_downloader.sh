@@ -54,13 +54,13 @@ echo "                                                Sucrose ${RESET}"
 echo
 curl -L https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_installer.sh -o /home/chronos/user/sucrose_installer
 echo
-echo "${CYAN}How to install: ${RESET}${BLUE}"
-echo
+echo "${CYAN}${BOLD}How to install: ${RESET}${BLUE}"
+echo "${CYAN}"
 echo "1.) ctrl-alt-refresh to open VT-2 (ctrl-alt-back to exit)"
 echo "2.) Log in as chronos"
 echo "3.) Run the command listed below in VT-2 to continue the installer:"
-echo "${BOLD}"
+echo "${RESET}${BOLD}${BLUE}"
 echo "sudo bash ~/sucrose_installer"
 echo "${RESET}${BLUE}"
-echo "Can safely ignore noexec mount warning. ${RESET}"
+echo "${MAGENTA}Can safely ignore noexec mount warning. ${RESET}"
 echo
