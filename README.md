@@ -18,15 +18,16 @@
 ### How to use:
 
 - After installing, open VT-2 (ctrl-alt-refresh), log in as chronos, and run:
-`sudo sucrose-daemon`
+`sudo sucrose-daemon` and let it run. 
 
-- Leave VT-2 (ctrl-alt-back) and prepend `sucrose` to the command of your choice in crosh `shell`. 
+- Leave VT-2 (ctrl-alt-back) and sudo should now be enabled in crosh shell!
 
 ### How does this work? 
 
-- Uses `mkfifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucrose` to command. 
+- Uses `mkfifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucrose` or `sudo` to command. 
 - The daemon uses `read` to passively wait for use of its fifo before it replies back.
 - Fully atomic and ephemeral without any buffer.
+- Enter VT-2, log in as chronos, and run `sudo sucrose_uninstaller` to uninstall. 
 
 <br>
 
