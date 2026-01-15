@@ -22,14 +22,14 @@ COLORS=(
 
 LOGO_COLOR="${COLORS[RANDOM % ${#COLORS[@]}]}"
 
-rainbow_indices=()
-for ((g=0; g<=5; g++)); do rainbow_indices+=( $((16 + 36*5 + 6*g + 0)) ); done
-for ((r=5; r>=0; r--)); do rainbow_indices+=( $((16 + 36*r + 6*5 + 0)) ); done
-for ((b=0; b<=5; b++)); do rainbow_indices+=( $((16 + 36*0 + 6*5 + b)) ); done
-for ((g=5; g>=0; g--)); do rainbow_indices+=( $((16 + 36*0 + 6*g + 5)) ); done
-for ((r=0; r<=5; r++)); do rainbow_indices+=( $((16 + 36*r + 6*0 + 5)) ); done
-for ((b=5; b>=0; b--)); do rainbow_indices+=( $((16 + 36*5 + 6*0 + b)) ); done
-num_colors=${#rainbow_indices[@]}
+rainbow_index=()
+for ((g=0; g<=5; g++)); do rainbow_index+=( $((16 + 36*5 + 6*g + 0)) ); done
+for ((r=5; r>=0; r--)); do rainbow_index+=( $((16 + 36*r + 6*5 + 0)) ); done
+for ((b=0; b<=5; b++)); do rainbow_index+=( $((16 + 36*0 + 6*5 + b)) ); done
+for ((g=5; g>=0; g--)); do rainbow_index+=( $((16 + 36*0 + 6*g + 5)) ); done
+for ((r=0; r<=5; r++)); do rainbow_index+=( $((16 + 36*r + 6*0 + 5)) ); done
+for ((b=5; b>=0; b--)); do rainbow_index+=( $((16 + 36*5 + 6*0 + b)) ); done
+num_colors=${#rainbow_index[@]}
 
 rainbow_echo() {
     local text="$1"
@@ -40,7 +40,7 @@ rainbow_echo() {
         if [[ "$char" == " " || "$char" == $'\n' ]]; then
             printf "%s" "$char"
         else
-            printf "%s%s%s" "$(tput setaf "${rainbow_indices[i]}")" "$char" "$RESET"
+            printf "%s%s%s" "$(tput setaf "${rainbow_index[i]}")" "$char" "$RESET"
             (( i = (i + 1) % num_colors ))
         fi
     done <<< "$text"
@@ -85,7 +85,7 @@ rainbow_echo "                               ..   ':.         .;;.             .
 rainbow_echo "                                   l0Oc         .od,            .l00o. "                           
 rainbow_echo "                                   ,ol'         cO0o.            .:c' "                            
 rainbow_echo "                                                :kkl. "                             
-echo "${RESET}${LOGO_COLOR}                                             "
+echo "${RESET}${BOLD}${LOGO_COLOR}                                             "
 echo "                                 ▄▄▄▄▄▄▄                                     "
 echo "                                █████▀▀▀                                     "
 echo "                                 ▀████▄  ██ ██ ▄████ ████▄ ▄███▄ ▄█▀▀▀ ▄█▀█▄ "
