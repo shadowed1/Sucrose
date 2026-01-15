@@ -53,7 +53,6 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
 echo "${RESET}${GREEN}${BOLD}"
 echo "[sucrose] Installation complete"
 echo
-sudo rm ~/sucrose_installer 2>/dev/null
 echo "${RESET}"
 
 read -r -p "${BLUE}${BOLD}Start sucros-daemon now? [y/N] ${RESET}" ans
@@ -64,3 +63,5 @@ if [[ "$ans" =~ ^[Yy]$ ]]; then
 else
         echo "${CYAN}Run: sudo sucrose-daemon in VT-2 logged in as chronos when ready ${RESET}"
 fi
+
+sudo rm /home/chronos/user/sucrose_installer 2>/dev/null
