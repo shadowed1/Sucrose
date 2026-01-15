@@ -14,6 +14,12 @@ RESET=$(tput sgr0)
 CMD_FIFO="/home/chronos/.sucrose.fifo"
 LOCK_FILE="/home/chronos/.sucrose.lock"
 
+cleanup() {
+    rm -f "$CMD_FIFO"
+    echo "${RED}Stopping sucrose-daemon ${RESET}"
+}
+trap cleanup EXIT
+
 exec 200>"$LOCK_FILE" || exit 1
 flock -n 200 || {
     echo
