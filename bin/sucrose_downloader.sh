@@ -105,5 +105,5 @@ echo "3.) Run the command listed below in VT-2 to continue the installer:"
 echo "${RESET}${BOLD}${BLUE}"
 echo "sudo bash ~/sucrose_installer"
 echo "${RESET}${BLUE}"
-echo "${MAGENTA}Can safely ignore noexec mount warning. ${RESET}"
+echo "${MAGENTA}README: ${BOLD}https://github.com/shadowed1/sucrose/blob/main/README.md${RESET}"
 echo
