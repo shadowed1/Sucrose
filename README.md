@@ -7,7 +7,9 @@
 ### How to install:
 
 <br>
+
 - Requires developer mode. 
+
 - Press `ctrl-alt-t`, open a crosh `shell` and paste:
 
 <pre>bash <(curl -s "https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_downloader.sh?$(date +%s)")</pre>
@@ -25,4 +27,9 @@
 
 - Uses `fifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucrose` to command. 
 - The daemon uses `read` to passively wait for use of its fifo before it replies back.
-- Fully atomic and ephemeral without any buffer. 
+- Fully atomic and ephemeral without any buffer.
+
+<br>
+
+To enable sudo in crosh natively, check out sudoCrosh:
+https://github.com/shadowed1/sudoCrosh
