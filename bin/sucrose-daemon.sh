@@ -1,5 +1,5 @@
 #!/bin/bash
-# Sucrose Wrapper
+# Sucrose Daemon
 # shadowed1
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
@@ -11,56 +11,49 @@ BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
 CMD_FIFO="/home/chronos/.sucrose.fifo"
+LOCK_FILE="/home/chronos/.sucrose.lock"
 
-if [[ ! -p "$CMD_FIFO" ]]; then
-    echo 'sudo: The "no new privileges" flag is set, which prevents sudo from running as root.'
-    echo "sudo: If sudo is running in a container, you may need to adjust the container configuration to disable the flag."
-    echo "${RED}"
-    echo "sucrose-daemon is not running - ${BOLD}sudo is disabled${RESET}"
+exec 200>"$LOCK_FILE" || exit 1
+flock -n 200 || {
+    echo
+    echo "[sucrose-daemon] Already running"
     echo
     exit 1
-fi
+}
 
-if [[ $# -eq 0 ]]; then
-    echo "usage: sudo -h | -K | -k | -V "
-    echo "usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user] "
-    echo "usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user] "
-    echo "            [-u user] [command [arg ...]] "
-    echo "usage: sudo [-ABbEHkNnPS] [-C num] [-D directory] "
-    echo "            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout] "
-    echo "            [-u user] [VAR=value] [-i | -s] [command [arg ...]] "
-    echo "usage: sudo -e [-ABkNnS] [-C num] [-D directory] "
-    echo "            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout] "
-    echo "            [-u user] file ... "
-    echo "${GREEN}"
-    echo "sucrose-daemon is running - ${BOLD}sudo is enabled${RESET}"
-    echo
-    exit 1
-fi
-
-REPLY_FIFO="/home/chronos/.sucrose.reply.$$"
+rm -f "$CMD_FIFO" 2>/dev/null
+mkfifo "$CMD_FIFO"
+chown 1000:1000 "$CMD_FIFO"
+chmod 600 "$CMD_FIFO"
 
 cleanup() {
-    rm -f "$REPLY_FIFO"
+    rm -f "$CMD_FIFO" 2>/dev/null
+    echo "${RED}sucrose-daemon stopped${RESET}"
 }
 trap cleanup EXIT
+trap 'exit' SIGINT SIGTERM
 
-mkfifo "$REPLY_FIFO"
-chmod 600 "$REPLY_FIFO"
+echo
+echo "[sucrose-daemon] Listening on $CMD_FIFO"
+echo
 
-TTY_DEV=$(tty)
-
-{
-    printf '%s|%s|' "$REPLY_FIFO" "$TTY_DEV"
-    printf '%q ' "$@" | sed 's/ $/\n/'
-} >"$CMD_FIFO"
-
-exit_code=0
-while IFS= read -r line; do
-    if [[ "$line" == __SUCROS_EXIT__:* ]]; then
-        exit_code="${line#__SUCROS_EXIT__:}"
-        break
+while true; do
+    if IFS= read -r line <"$CMD_FIFO"; then
+        reply_fifo="${line%%|*}"
+        tty_dev="${line#*|}"
+        tty_dev="${tty_dev%%|*}"
+        cmd="${line#*|*|}"
+        cmd="${cmd#"${cmd%%[![:space:]]*}"}"
+        cmd="${cmd%"${cmd##*[![:space:]]}"}"
+        
+        [[ -z "$cmd" ]] && continue
+        [[ ! -p "$reply_fifo" ]] && continue
+        
+        echo "[sucrose-daemon] Running: $cmd" >/dev/tty
+        
+        {
+            /bin/bash -c "$cmd" <"$tty_dev" >"$tty_dev" 2>&1
+            echo "__SUCROSE_EXIT__:$?"
+        } >"$reply_fifo"
     fi
-done <"$REPLY_FIFO"
-
-exit "$exit_code"
+done
