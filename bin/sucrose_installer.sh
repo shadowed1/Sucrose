@@ -38,7 +38,7 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
     echo '    unalias sudo 2>/dev/null'
     echo 'fi'
     echo "# <<< END SUCROSE SUDO MARKER <<<"
-} >> "$BASHRC"
+} >> "$TARGET_FILE"
 
 echo "[sucrose] Installation complete"
 echo "[sucrose] Run: sudo sucrose-daemon in VT-2 logged in as chronos"
