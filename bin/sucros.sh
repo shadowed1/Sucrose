@@ -1,20 +1,20 @@
 #!/bin/bash
-# Bidirectional Sucros Wrapper
+# Bidirectional Sucrose Wrapper
 # shadowed1
 
-CMD_FIFO="/home/chronos/.sucros.fifo"
+CMD_FIFO="/home/chronos/.sucrose.fifo"
 
 if [[ ! -p "$CMD_FIFO" ]]; then
-    echo "sucros-daemon not running" >&2
+    echo "sucrose-daemon not running" >&2
     exit 1
 fi
 
 if [[ $# -eq 0 ]]; then
-    echo "usage: sucros command" >&2
+    echo "usage: sucrose command" >&2
     exit 1
 fi
 
-REPLY_FIFO="/home/chronos/.sucros.reply.$$"
+REPLY_FIFO="/home/chronos/.sucrose.reply.$$"
 
 cleanup() {
     rm -f "$REPLY_FIFO"
