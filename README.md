@@ -12,7 +12,14 @@
 
 <br>
 
-# How does this work? 
+### How to use:
+
+- After installing, open VT-2 (ctrl-alt-refresh), log in as chronos, and run:
+`sudo sucros-daemon`
+
+- Leave VT-2 (ctrl-alt-back) and prepend `sucros` to the command of your choice in crosh `shell`. 
+
+### How does this work? 
 
 - Uses `fifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucros` to command. 
 - The daemon uses `read` to passively wait for use of its fifo before it replies back.
