@@ -6,7 +6,6 @@
 
 ### How to install:
 
-<br>
 
 - Requires developer mode. 
 
@@ -25,7 +24,7 @@
 
 ### How does this work? 
 
-- Uses `fifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucrose` to command. 
+- Uses `mkfifo` for bidirectional communication between crosh shell and VT-2 when prepending `sucrose` to command. 
 - The daemon uses `read` to passively wait for use of its fifo before it replies back.
 - Fully atomic and ephemeral without any buffer.
 
