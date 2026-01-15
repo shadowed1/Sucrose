@@ -50,7 +50,15 @@ echo "                                   l0Oc         .od,            .l00o. "
 echo "                                   ,ol'         cO0o.            .:c' "                            
 echo "                                                :kkl. "                             
 echo
-echo "                                                Sucrose ${RESET}"
+echo "${RESET}${BLUE}                                             "
+echo "                                 ▄▄▄▄▄▄▄                                     "
+echo "                                █████▀▀▀                                     "
+echo "                                 ▀████▄  ██ ██ ▄████ ████▄ ▄███▄ ▄█▀▀▀ ▄█▀█▄ "
+echo "                                   ▀████ ██ ██ ██    ██ ▀▀ ██ ██ ▀███▄ ██▄█▀ "
+echo "                                ███████▀ ▀██▀█ ▀████ ██    ▀███▀ ▄▄▄█▀ ▀█▄▄▄ "
+echo "                                             "
+echo "                                             ${RESET}${GREEN}"
+echo "                                           Enabling sudo in crosh! ${RESET}"   
 echo
 curl -L https://raw.githubusercontent.com/shadowed1/sucrose/main/bin/sucrose_installer.sh -o /home/chronos/user/sucrose_installer
 echo
