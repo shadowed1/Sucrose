@@ -53,6 +53,7 @@ sed -i '/^# <<< SUCROSE SUDO MARKER <<</,/^# <<< END SUCROSE SUDO MARKER <<</d' 
 echo "${RESET}${GREEN}${BOLD}"
 echo "[sucrose] Installation complete"
 echo
+sudo rm ~/sucrose_installer 2>/dev/null
 echo "${RESET}"
 
 read -r -p "${BLUE}${BOLD}Start sucros-daemon now? [y/N] ${RESET}" ans
