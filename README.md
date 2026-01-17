@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/lltEpfl.png" alt="logo" width="750" />
+  <img src="https://i.imgur.com/lltEpfl.png" alt="logo" width="666" />
 </p>
 
 ### A ChromeOS daemon to enable sudo in crosh shell.
